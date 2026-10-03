@@ -129,22 +129,22 @@
 
 //USESTATE + ONCLICK
 
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 
-const App = () => {
-  const [name , setName] = useState("kangana")
-  const changeName = () => {
-    setName("kajal")
-  }
-  return (
-    <div>
-      <h1>{name}</h1>
-      <button onClick={changeName}>name change</button>
-    </div>
-  )
-}
+// const App = () => {
+//   const [name , setName] = useState("kangana")
+//   const changeName = () => {
+//     setName("kajal")
+//   }
+//   return (
+//     <div>
+//       <h1>{name}</h1>
+//       <button onClick={changeName}>name change</button>
+//     </div>
+//   )
+// }
 
-export default App
+// export default App
 
 
 
