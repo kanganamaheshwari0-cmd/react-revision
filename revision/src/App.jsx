@@ -32,18 +32,18 @@
 
 // PROPS PARENT COMPONENT
 
-import React from 'react'
-import User from './user'
+// import React from 'react'
+// import User from './user'
 
-const App = () => {
-  return (
-    <div>
-      <User name = "kangana" age={19}/>
-    </div>
-  )
-}
+// const App = () => {
+//   return (
+//     <div>
+//       <User name = "kangana" age={19}/>
+//     </div>
+//   )
+// }
 
-export default App
+// export default App
 
 // EXAMPLe 2
 
@@ -61,19 +61,19 @@ export default App
 
 //CHILD PROPS
 
-// import React from 'react'
-// import Card from './Card'
+import React from 'react'
+import Card from './Card'
 
-// const App = () => {
-//   return (
-//     <Card>
-//         <h2>Kangana maheshwari</h2>
-//         <p>welcome my profile</p>
-//     </Card>
-//   )
-// }
+const App = () => {
+  return (
+    <Card>
+        <h2>Kangana maheshwari</h2>
+        <p>welcome my profile</p>
+    </Card>
+  )
+}
 
-// export default App
+export default App
 
 
 //USE STATE HOOK
