@@ -12,38 +12,38 @@
 
 //HTML ke code me ham js kese use karte hai...............
 
-import React from 'react'
-import Header from './Header'
-
-const App = () => {
-
-  const name = "Kangana"
-  return (
-    <div>
-      <Header/>
-      <h1> Hello {name} </h1>
-      <p>Welcome to React</p>
-    </div>
-
-  )
-}
-
-export default App
-
-// PROPS PARENT COMPONENT
-
 // import React from 'react'
-// import User from './user'
+// import Header from './Header'
 
 // const App = () => {
+
+//   const name = "Kangana"
 //   return (
 //     <div>
-//       <User name = "kangana" age={19}/>
+//       <Header/>
+//       <h1> Hello {name} </h1>
+//       <p>Welcome to React</p>
 //     </div>
+
 //   )
 // }
 
 // export default App
+
+// PROPS PARENT COMPONENT
+
+import React from 'react'
+import User from './user'
+
+const App = () => {
+  return (
+    <div>
+      <User name = "kangana" age={19}/>
+    </div>
+  )
+}
+
+export default App
 
 // EXAMPLe 2
 
