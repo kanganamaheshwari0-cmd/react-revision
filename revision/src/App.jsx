@@ -61,38 +61,38 @@
 
 //CHILD PROPS
 
-import React from 'react'
-import Card from './Card'
-
-const App = () => {
-  return (
-    <Card>
-        <h2>Kangana maheshwari</h2>
-        <p>welcome my profile</p>
-    </Card>
-  )
-}
-
-export default App
-
-
-//USE STATE HOOK
-
-// import React, { useState } from 'react'
+// import React from 'react'
+// import Card from './Card'
 
 // const App = () => {
-//     const [count , setCount] = useState(0)
 //   return (
-//     <div>
-//       <h1>{count}</h1>
-
-//       <button onClick={() => setCount(count+1)}>
-//         Increase</button>
-//     </div>
+//     <Card>
+//         <h2>Kangana maheshwari</h2>
+//         <p>welcome my profile</p>
+//     </Card>
 //   )
 // }
 
 // export default App
+
+
+//USE STATE HOOK
+
+import React, { useState } from 'react'
+
+const App = () => {
+    const [count , setCount] = useState(0)
+  return (
+    <div>
+      <h1>{count}</h1>
+
+      <button onClick={() => setCount(count+1)}>
+        Increase</button>
+    </div>
+  )
+}
+
+export default App
 
 //2ND EXAMPLE USESTATE
 
