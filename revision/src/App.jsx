@@ -78,21 +78,21 @@
 
 //USE STATE HOOK
 
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 
-const App = () => {
-    const [count , setCount] = useState(0)
-  return (
-    <div>
-      <h1>{count}</h1>
+// const App = () => {
+//     const [count , setCount] = useState(0)
+//   return (
+//     <div>
+//       <h1>{count}</h1>
 
-      <button onClick={() => setCount(count+1)}>
-        Increase</button>
-    </div>
-  )
-}
+//       <button onClick={() => setCount(count+1)}>
+//         Increase</button>
+//     </div>
+//   )
+// }
 
-export default App
+// export default App
 
 //2ND EXAMPLE USESTATE
 
@@ -109,6 +109,24 @@ export default App
 // }
 
 // export default App
+
+// EVENT HANDLING ONCLICK
+
+import React from 'react'
+
+const App = () => {
+  const handleClick = () => {
+    alert("Button clicked")
+  }
+  return (
+    <div>
+      <button onClick={handleClick}> Click me</button>
+    </div>
+  )
+}
+
+export default App
+
 
 
 
