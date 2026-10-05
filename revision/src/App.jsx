@@ -166,25 +166,44 @@
 
 // export default App
 
+// import React from 'react'
+// import User from './user'
 
+// const App = () => {
+//   return (
+//     <div>
+//       <User name = "kangana" age={19}/>
+//    </div>
+    
+//   )
+// }
+
+// export default App
+
+// CONDITIONAL RENDERING
 
 import React, { useState } from 'react'
 
 const App = () => {
-  const [name , setName] = useState("")
+  const [isLogin , setIsLogin] = useState(false)
   return (
     <div>
-      <input type="text"
-      onChange={(e) => setName(e.target.value)}
-      
-      />
-      <h1>{name}</h1>
-      
+      <h1>
+        {isLogin ? "WelcomeUser" : "Please login"}
+      </h1>
+
+      <button onClick={() =>setIsLogin(!isLogin)}>Login/Logout</button>
     </div>
   )
 }
 
 export default App
+
+
+
+
+
+
 
 
 
