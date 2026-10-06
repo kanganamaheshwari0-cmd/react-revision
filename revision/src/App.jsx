@@ -251,21 +251,48 @@
 
 //LISTS AND KEYS
 
+// import React from "react";
+
+// function App() {
+//   const students = [
+//     { id: 1, name: "Kangana", course: "CSE" },
+//     { id: 2, name: "Riya", course: "IT" },
+//     { id: 3, name: "Anjali", course: "CSE" }
+//   ];
+
+//   return (
+//     <div>
+//       {students.map((student) => (
+//         <div key={student.id}>
+//           <h2>{student.name}</h2>
+//           <p>{student.course}</p>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//2ND EXAMPLE LISTS AND KEYS
+
 import React from "react";
 
 function App() {
-  const students = [
-    { id: 1, name: "Kangana", course: "CSE" },
-    { id: 2, name: "Riya", course: "IT" },
-    { id: 3, name: "Anjali", course: "CSE" }
+  const jobs = [
+    { id: 1, title: "Frontend Developer", company: "TCS" },
+    { id: 2, title: "Backend Developer", company: "Infosys" },
+    { id: 3, title: "Full Stack Developer", company: "Wipro" }
   ];
 
   return (
     <div>
-      {students.map((student) => (
-        <div key={student.id}>
-          <h2>{student.name}</h2>
-          <p>{student.course}</p>
+      <h1>Available Jobs</h1>
+
+      {jobs.map((job) => (
+        <div key={job.id}>
+          <h2>{job.title}</h2>
+          <p>{job.company}</p>
         </div>
       ))}
     </div>
