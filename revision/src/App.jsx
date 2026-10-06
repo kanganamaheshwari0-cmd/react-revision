@@ -556,82 +556,113 @@
 
 //EXAMPLE-2 FORM VALIDATION
 
-import { useState } from "react";
+// import { useState } from "react";
+
+// function App() {
+//   const [name, setName] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [error, setError] = useState("");
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     if (name === "") {
+//       setError("Name is required");
+//       return;
+//     }
+
+//     if (email === "") {
+//       setError("Email is required");
+//       return;
+//     }
+
+//     if (password === "") {
+//       setError("Password is required");
+//       return;
+//     }
+
+//     if (password.length < 6) {
+//       setError("Password must be at least 6 characters");
+//       return;
+//     }
+
+//     setError("");
+
+//     console.log("Form submitted successfully");
+//   };
+
+//   return (
+//     <div>
+//       <h1>Registration Form</h1>
+
+//       <form onSubmit={handleSubmit}>
+
+//         <input
+//           type="text"
+//           placeholder="Enter name"
+//           value={name}
+//           onChange={(e) => setName(e.target.value)}
+//         />
+
+//         <br />
+//         <br />
+
+//         <input
+//           type="email"
+//           placeholder="Enter email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//         />
+
+//         <br />
+//         <br />
+
+//         <input
+//           type="password"
+//           placeholder="Enter password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//         />
+
+//         <br />
+//         <br />
+
+//         <button type="submit">Register</button>
+//       </form>
+
+//       {error && <p>{error}</p>}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//API CALL
+
+import { useEffect, useState } from "react";
 
 function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [users, setUsers] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (name === "") {
-      setError("Name is required");
-      return;
-    }
-
-    if (email === "") {
-      setError("Email is required");
-      return;
-    }
-
-    if (password === "") {
-      setError("Password is required");
-      return;
-    }
-
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters");
-      return;
-    }
-
-    setError("");
-
-    console.log("Form submitted successfully");
-  };
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((data) => {
+        setUsers(data);
+      });
+  }, []);
 
   return (
     <div>
-      <h1>Registration Form</h1>
+      <h1>Users</h1>
 
-      <form onSubmit={handleSubmit}>
-
-        <input
-          type="text"
-          placeholder="Enter name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-
-        <br />
-        <br />
-
-        <input
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <br />
-        <br />
-
-        <input
-          type="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <br />
-        <br />
-
-        <button type="submit">Register</button>
-      </form>
-
-      {error && <p>{error}</p>}
+      {users.map((user) => (
+        <div key={user.id}>
+          <h2>{user.name}</h2>
+          <p>{user.email}</p>
+        </div>
+      ))}
     </div>
   );
 }
