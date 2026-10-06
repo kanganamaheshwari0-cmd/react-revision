@@ -303,28 +303,89 @@
 
 //FORMS
 
+// import { useState } from "react";
+
+// function App() {
+//   const [name, setName] = useState("");
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     console.log(name);
+//   };
+
+//   return (
+//     <div>
+//       <form onSubmit={handleSubmit}>
+//         <input
+//           type="text"
+//           placeholder="Enter your name"
+//           value={name}
+//           onChange={(e) => setName(e.target.value)}
+//         />
+
+//         <button type="submit">Submit</button>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//FORMS MULTIPLE INPUT
+
 import { useState } from "react";
 
 function App() {
-  const [name, setName] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(name);
+    console.log(formData);
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
+
         <input
           type="text"
-          placeholder="Enter your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          name="name"
+          placeholder="Enter name"
+          value={formData.name}
+          onChange={handleChange}
         />
 
-        <button type="submit">Submit</button>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+
+        <button type="submit">Register</button>
+
       </form>
     </div>
   );
