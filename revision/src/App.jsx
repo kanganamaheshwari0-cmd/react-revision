@@ -395,31 +395,135 @@
 
 //FORMS CHECKBOX + RADIO + SELECT
 
+// import { useState } from "react";
+
+// function App() {
+//   const [name, setName] = useState("");
+//   const [agree, setAgree] = useState(false);
+//   const [gender, setGender] = useState("");
+//   const [course, setCourse] = useState("");
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     console.log({
+//       name,
+//       agree,
+//       gender,
+//       course
+//     });
+//   };
+
+//   return (
+//     <div>
+//       <h1>Student Form</h1>
+
+//       <form onSubmit={handleSubmit}>
+
+//         <input
+//           type="text"
+//           placeholder="Enter your name"
+//           value={name}
+//           onChange={(e) => setName(e.target.value)}
+//         />
+
+//         <br />
+//         <br />
+
+//         <p>Select Gender:</p>
+
+//         <label>
+//           <input
+//             type="radio"
+//             name="gender"
+//             value="Male"
+//             checked={gender === "Male"}
+//             onChange={(e) => setGender(e.target.value)}
+//           />
+//           Male
+//         </label>
+
+//         <label>
+//           <input
+//             type="radio"
+//             name="gender"
+//             value="Female"
+//             checked={gender === "Female"}
+//             onChange={(e) => setGender(e.target.value)}
+//           />
+//           Female
+//         </label>
+
+//         <br />
+//         <br />
+
+//         <label>Select Course: </label>
+
+//         <select
+//           value={course}
+//           onChange={(e) => setCourse(e.target.value)}
+//         >
+//           <option value="">Select Course</option>
+//           <option value="CSE">CSE</option>
+//           <option value="IT">IT</option>
+//           <option value="ECE">ECE</option>
+//         </select>
+
+//         <br />
+//         <br />
+
+//         <label>
+//           <input
+//             type="checkbox"
+//             checked={agree}
+//             onChange={(e) => setAgree(e.target.checked)}
+//           />
+//           I agree to the terms
+//         </label>
+
+//         <br />
+//         <br />
+
+//         <button type="submit">Submit</button>
+
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//FORM VALIDATION
+
 import { useState } from "react";
 
 function App() {
   const [name, setName] = useState("");
-  const [agree, setAgree] = useState(false);
-  const [gender, setGender] = useState("");
-  const [course, setCourse] = useState("");
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log({
-      name,
-      agree,
-      gender,
-      course
-    });
+    if (name === "") {
+      setError("Name is required");
+      return;
+    }
+
+    if (email === "") {
+      setError("Email is required");
+      return;
+    }
+
+    setError("");
+    console.log("Form submitted");
   };
 
   return (
     <div>
-      <h1>Student Form</h1>
+      <h1>Registration Form</h1>
 
       <form onSubmit={handleSubmit}>
-
         <input
           type="text"
           placeholder="Enter your name"
@@ -430,63 +534,20 @@ function App() {
         <br />
         <br />
 
-        <p>Select Gender:</p>
-
-        <label>
-          <input
-            type="radio"
-            name="gender"
-            value="Male"
-            checked={gender === "Male"}
-            onChange={(e) => setGender(e.target.value)}
-          />
-          Male
-        </label>
-
-        <label>
-          <input
-            type="radio"
-            name="gender"
-            value="Female"
-            checked={gender === "Female"}
-            onChange={(e) => setGender(e.target.value)}
-          />
-          Female
-        </label>
-
-        <br />
-        <br />
-
-        <label>Select Course: </label>
-
-        <select
-          value={course}
-          onChange={(e) => setCourse(e.target.value)}
-        >
-          <option value="">Select Course</option>
-          <option value="CSE">CSE</option>
-          <option value="IT">IT</option>
-          <option value="ECE">ECE</option>
-        </select>
-
-        <br />
-        <br />
-
-        <label>
-          <input
-            type="checkbox"
-            checked={agree}
-            onChange={(e) => setAgree(e.target.checked)}
-          />
-          I agree to the terms
-        </label>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
         <br />
         <br />
 
         <button type="submit">Submit</button>
-
       </form>
+
+      {error && <p>{error}</p>}
     </div>
   );
 }
