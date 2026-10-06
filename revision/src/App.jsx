@@ -276,25 +276,56 @@
 
 //2ND EXAMPLE LISTS AND KEYS
 
-import React from "react";
+// import React from "react";
+
+// function App() {
+//   const jobs = [
+//     { id: 1, title: "Frontend Developer", company: "TCS" },
+//     { id: 2, title: "Backend Developer", company: "Infosys" },
+//     { id: 3, title: "Full Stack Developer", company: "Wipro" }
+//   ];
+
+//   return (
+//     <div>
+//       <h1>Available Jobs</h1>
+
+//       {jobs.map((job) => (
+//         <div key={job.id}>
+//           <h2>{job.title}</h2>
+//           <p>{job.company}</p>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//FORMS
+
+import { useState } from "react";
 
 function App() {
-  const jobs = [
-    { id: 1, title: "Frontend Developer", company: "TCS" },
-    { id: 2, title: "Backend Developer", company: "Infosys" },
-    { id: 3, title: "Full Stack Developer", company: "Wipro" }
-  ];
+  const [name, setName] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(name);
+  };
 
   return (
     <div>
-      <h1>Available Jobs</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter your name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
 
-      {jobs.map((job) => (
-        <div key={job.id}>
-          <h2>{job.title}</h2>
-          <p>{job.company}</p>
-        </div>
-      ))}
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }
