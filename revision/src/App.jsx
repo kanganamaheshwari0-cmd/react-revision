@@ -334,57 +334,157 @@
 
 //FORMS MULTIPLE INPUT
 
+// import { useState } from "react";
+
+// function App() {
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     password: ""
+//   });
+
+//   const handleChange = (e) => {
+//     setFormData({
+//       ...formData,
+//       [e.target.name]: e.target.value
+//     });
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     console.log(formData);
+//   };
+
+//   return (
+//     <div>
+//       <form onSubmit={handleSubmit}>
+
+//         <input
+//           type="text"
+//           name="name"
+//           placeholder="Enter name"
+//           value={formData.name}
+//           onChange={handleChange}
+//         />
+
+//         <input
+//           type="email"
+//           name="email"
+//           placeholder="Enter email"
+//           value={formData.email}
+//           onChange={handleChange}
+//         />
+
+//         <input
+//           type="password"
+//           name="password"
+//           placeholder="Enter password"
+//           value={formData.password}
+//           onChange={handleChange}
+//         />
+
+//         <button type="submit">Register</button>
+
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//FORMS CHECKBOX + RADIO + SELECT
+
 import { useState } from "react";
 
 function App() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: ""
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const [name, setName] = useState("");
+  const [agree, setAgree] = useState(false);
+  const [gender, setGender] = useState("");
+  const [course, setCourse] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(formData);
+    console.log({
+      name,
+      agree,
+      gender,
+      course
+    });
   };
 
   return (
     <div>
+      <h1>Student Form</h1>
+
       <form onSubmit={handleSubmit}>
 
         <input
           type="text"
-          name="name"
-          placeholder="Enter name"
-          value={formData.name}
-          onChange={handleChange}
+          placeholder="Enter your name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter email"
-          value={formData.email}
-          onChange={handleChange}
-        />
+        <br />
+        <br />
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter password"
-          value={formData.password}
-          onChange={handleChange}
-        />
+        <p>Select Gender:</p>
 
-        <button type="submit">Register</button>
+        <label>
+          <input
+            type="radio"
+            name="gender"
+            value="Male"
+            checked={gender === "Male"}
+            onChange={(e) => setGender(e.target.value)}
+          />
+          Male
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="gender"
+            value="Female"
+            checked={gender === "Female"}
+            onChange={(e) => setGender(e.target.value)}
+          />
+          Female
+        </label>
+
+        <br />
+        <br />
+
+        <label>Select Course: </label>
+
+        <select
+          value={course}
+          onChange={(e) => setCourse(e.target.value)}
+        >
+          <option value="">Select Course</option>
+          <option value="CSE">CSE</option>
+          <option value="IT">IT</option>
+          <option value="ECE">ECE</option>
+        </select>
+
+        <br />
+        <br />
+
+        <label>
+          <input
+            type="checkbox"
+            checked={agree}
+            onChange={(e) => setAgree(e.target.checked)}
+          />
+          I agree to the terms
+        </label>
+
+        <br />
+        <br />
+
+        <button type="submit">Submit</button>
 
       </form>
     </div>
