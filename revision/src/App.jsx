@@ -221,28 +221,53 @@
 
 // export default App;
 
-//CONDITIOPNAL RENDERINF IF-ELSE
+//CONDITIONAL RENDERINF IF-ELSE
 
-import { useState } from "react";
+// import { useState } from "react";
+
+// function App() {
+//   const [isLogin, setIsLogin] = useState(false);
+
+//   let message;
+
+//   if (isLogin) {
+//     message = <h1>Welcome User</h1>;
+//   } else {
+//     message = <h1>Please Login</h1>;
+//   }
+
+//   return (
+//     <div>
+//       {message}
+
+//       <button onClick={() => setIsLogin(!isLogin)}>
+//         Login / Logout
+//       </button>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//LISTS AND KEYS
+
+import React from "react";
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false);
-
-  let message;
-
-  if (isLogin) {
-    message = <h1>Welcome User</h1>;
-  } else {
-    message = <h1>Please Login</h1>;
-  }
+  const students = [
+    { id: 1, name: "Kangana", course: "CSE" },
+    { id: 2, name: "Riya", course: "IT" },
+    { id: 3, name: "Anjali", course: "CSE" }
+  ];
 
   return (
     <div>
-      {message}
-
-      <button onClick={() => setIsLogin(!isLogin)}>
-        Login / Logout
-      </button>
+      {students.map((student) => (
+        <div key={student.id}>
+          <h2>{student.name}</h2>
+          <p>{student.course}</p>
+        </div>
+      ))}
     </div>
   );
 }
