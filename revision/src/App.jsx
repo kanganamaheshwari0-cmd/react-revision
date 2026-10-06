@@ -182,22 +182,72 @@
 
 // CONDITIONAL RENDERING
 
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 
-const App = () => {
-  const [isLogin , setIsLogin] = useState(false)
+// const App = () => {
+//   const [isLogin , setIsLogin] = useState(false)
+//   return (
+//     <div>
+//       <h1>
+//         {isLogin ? "WelcomeUser" : "Please login"}
+//       </h1>
+
+//       <button onClick={() =>setIsLogin(!isLogin)}>Login/Logout</button>
+//     </div>
+//   )
+// }
+
+// export default App
+
+//2nd Example
+
+// import { useState } from "react";
+
+// function App() {
+//   const [age, setAge] = useState(15);
+
+//   return (
+//     <div>
+//       <h1>Age: {age}</h1>
+
+//       {age >= 18 ? (
+//         <h2>You can vote</h2>
+//       ) : (
+//         <h2>You cannot vote</h2>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//CONDITIOPNAL RENDERINF IF-ELSE
+
+import { useState } from "react";
+
+function App() {
+  const [isLogin, setIsLogin] = useState(false);
+
+  let message;
+
+  if (isLogin) {
+    message = <h1>Welcome User</h1>;
+  } else {
+    message = <h1>Please Login</h1>;
+  }
+
   return (
     <div>
-      <h1>
-        {isLogin ? "WelcomeUser" : "Please login"}
-      </h1>
+      {message}
 
-      <button onClick={() =>setIsLogin(!isLogin)}>Login/Logout</button>
+      <button onClick={() => setIsLogin(!isLogin)}>
+        Login / Logout
+      </button>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
 
 
 
