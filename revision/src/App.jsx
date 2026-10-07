@@ -915,25 +915,65 @@
 
 //AXIOS ERROR HANDLING
 
+// import axios from "axios";
+
+// function App() {
+//   const getUsers = async () => {
+//     try {
+//       const response = await axios.get(
+//         "https://jsonplaceholder.typicode.com/users"
+//       );
+
+//       console.log(response.data);
+//     } catch (error) {
+//       console.log("Something went wrong:", error);
+//     }
+//   };
+
+//   return (
+//     <button onClick={getUsers}>
+//       Get Users
+//     </button>
+//   );
+// }
+
+// export default App;
+
+//AXIOS LOADING STATE
+
 import axios from "axios";
+import { useState } from "react";
 
 function App() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const getUsers = async () => {
     try {
+      setLoading(true);
+
       const response = await axios.get(
         "https://jsonplaceholder.typicode.com/users"
       );
 
-      console.log(response.data);
+      setUsers(response.data);
     } catch (error) {
-      console.log("Something went wrong:", error);
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <button onClick={getUsers}>
-      Get Users
-    </button>
+    <div>
+      <button onClick={getUsers}>Get Users</button>
+
+      {loading && <p>Loading...</p>}
+
+      {users.map((user) => (
+        <p key={user.id}>{user.name}</p>
+      ))}
+    </div>
   );
 }
 
