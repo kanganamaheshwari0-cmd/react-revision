@@ -941,34 +941,71 @@
 
 //AXIOS LOADING STATE
 
+// import axios from "axios";
+// import { useState } from "react";
+
+// function App() {
+//   const [users, setUsers] = useState([]);
+//   const [loading, setLoading] = useState(false);
+
+//   const getUsers = async () => {
+//     try {
+//       setLoading(true);
+
+//       const response = await axios.get(
+//         "https://jsonplaceholder.typicode.com/users"
+//       );
+
+//       setUsers(response.data);
+//     } catch (error) {
+//       console.log(error);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <button onClick={getUsers}>Get Users</button>
+
+//       {loading && <p>Loading...</p>}
+
+//       {users.map((user) => (
+//         <p key={user.id}>{user.name}</p>
+//       ))}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//Axios + useEffect() — API call automatically karna
+
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
 
-  const getUsers = async () => {
-    try {
-      setLoading(true);
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const response = await axios.get(
+          "https://jsonplaceholder.typicode.com/users"
+        );
 
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/users"
-      );
+        setUsers(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-      setUsers(response.data);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    getUsers();
+  }, []);
 
   return (
     <div>
-      <button onClick={getUsers}>Get Users</button>
-
-      {loading && <p>Loading...</p>}
+      <h2>Users</h2>
 
       {users.map((user) => (
         <p key={user.id}>{user.name}</p>
