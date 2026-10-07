@@ -811,7 +811,44 @@
 
 // export default App;
 
-//AXIOS
+//AXIOS POST
+
+// import axios from "axios";
+// import { useState } from "react";
+
+// function App() {
+//   const [name, setName] = useState("");
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     const response = await axios.post(
+//       "https://jsonplaceholder.typicode.com/users",
+//       {
+//         name: name,
+//       }
+//     );
+
+//     console.log(response.data);
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <input
+//         type="text"
+//         placeholder="Enter name"
+//         value={name}
+//         onChange={(e) => setName(e.target.value)}
+//       />
+
+//       <button type="submit">Submit</button>
+//     </form>
+//   );
+// }
+
+// export default App;
+
+//AXIOS PUT/PATCH 
 
 import axios from "axios";
 import { useState } from "react";
@@ -819,30 +856,32 @@ import { useState } from "react";
 function App() {
   const [name, setName] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const updateUser = async () => {
+    try {
+      const response = await axios.put(
+        "https://jsonplaceholder.typicode.com/users/1",
+        {
+          name: name,
+        }
+      );
 
-    const response = await axios.post(
-      "https://jsonplaceholder.typicode.com/users",
-      {
-        name: name,
-      }
-    );
-
-    console.log(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <input
         type="text"
-        placeholder="Enter name"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        placeholder="Enter new name"
       />
 
-      <button type="submit">Submit</button>
-    </form>
+      <button onClick={updateUser}>Update</button>
+    </div>
   );
 }
 
