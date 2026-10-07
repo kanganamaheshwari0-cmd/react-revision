@@ -708,10 +708,59 @@
 
 // API INTEGRATION ERROR-HANDLING
 
+// import { useEffect, useState } from "react";
+
+// function App() {
+//   const [users, setUsers] = useState([]);
+//   const [error, setError] = useState("");
+
+//   const getUsers = async () => {
+//     try {
+//       const response = await fetch(
+//         "https://jsonplaceholder.typicode.com/users"
+//       );
+
+//       if (!response.ok) {
+//         throw new Error("Something went wrong");
+//       }
+
+//       const data = await response.json();
+
+//       setUsers(data);
+//     } catch (error) {
+//       setError(error.message);
+//     }
+//   };
+
+//   useEffect(() => {
+//     getUsers();
+//   }, []);
+
+//   return (
+//     <div>
+//       <h1>Users</h1>
+
+//       {error && <p>{error}</p>}
+
+//       {users.map((user) => (
+//         <div key={user.id}>
+//           <h2>{user.name}</h2>
+//           <p>{user.email}</p>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//LOADING STATE
+
 import { useEffect, useState } from "react";
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   const getUsers = async () => {
@@ -729,6 +778,8 @@ function App() {
       setUsers(data);
     } catch (error) {
       setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -736,11 +787,17 @@ function App() {
     getUsers();
   }, []);
 
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (error) {
+    return <h1>{error}</h1>;
+  }
+
   return (
     <div>
       <h1>Users</h1>
-
-      {error && <p>{error}</p>}
 
       {users.map((user) => (
         <div key={user.id}>
