@@ -889,25 +889,51 @@
 
 //AXIOS DELETE
 
+// import axios from "axios";
+
+// function App() {
+//   const deleteUser = async () => {
+//     try {
+//       const response = await axios.delete(
+//         "https://jsonplaceholder.typicode.com/users/1"
+//       );
+
+//       console.log(response.data);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <button onClick={deleteUser}>Delete User</button>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//AXIOS ERROR HANDLING
+
 import axios from "axios";
 
 function App() {
-  const deleteUser = async () => {
+  const getUsers = async () => {
     try {
-      const response = await axios.delete(
-        "https://jsonplaceholder.typicode.com/users/1"
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/users"
       );
 
       console.log(response.data);
     } catch (error) {
-      console.log(error);
+      console.log("Something went wrong:", error);
     }
   };
 
   return (
-    <div>
-      <button onClick={deleteUser}>Delete User</button>
-    </div>
+    <button onClick={getUsers}>
+      Get Users
+    </button>
   );
 }
 
