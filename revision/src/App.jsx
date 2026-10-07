@@ -756,72 +756,94 @@
 
 //LOADING STATE
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+
+// function App() {
+//   const [users, setUsers] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState("");
+
+//   const getUsers = async () => {
+//     try {
+//       const response = await fetch(
+//         "https://jsonplaceholder.typicode.com/users"
+//       );
+
+//       if (!response.ok) {
+//         throw new Error("Something went wrong");
+//       }
+
+//       const data = await response.json();
+
+//       setUsers(data);
+//     } catch (error) {
+//       setError(error.message);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   useEffect(() => {
+//     getUsers();
+//   }, []);
+
+//   if (loading) {
+//     return <h1>Loading...</h1>;
+//   }
+
+//   if (error) {
+//     return <h1>{error}</h1>;
+//   }
+
+//   return (
+//     <div>
+//       <h1>Users</h1>
+
+//       {users.map((user) => (
+//         <div key={user.id}>
+//           <h2>{user.name}</h2>
+//           <p>{user.email}</p>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//AXIOS
+
+import axios from "axios";
+import { useState } from "react";
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [name, setName] = useState("");
 
-  const getUsers = async () => {
-    try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users"
-      );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      if (!response.ok) {
-        throw new Error("Something went wrong");
+    const response = await axios.post(
+      "https://jsonplaceholder.typicode.com/users",
+      {
+        name: name,
       }
+    );
 
-      const data = await response.json();
-
-      setUsers(data);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
+    console.log(response.data);
   };
 
-  useEffect(() => {
-    getUsers();
-  }, []);
-
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
-
-  if (error) {
-    return <h1>{error}</h1>;
-  }
-
   return (
-    <div>
-      <h1>Users</h1>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Enter name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
 
-      {users.map((user) => (
-        <div key={user.id}>
-          <h2>{user.name}</h2>
-          <p>{user.email}</p>
-        </div>
-      ))}
-    </div>
+      <button type="submit">Submit</button>
+    </form>
   );
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
