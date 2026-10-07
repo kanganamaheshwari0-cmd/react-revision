@@ -850,19 +850,52 @@
 
 //AXIOS PUT/PATCH 
 
+// import axios from "axios";
+// import { useState } from "react";
+
+// function App() {
+//   const [name, setName] = useState("");
+
+//   const updateUser = async () => {
+//     try {
+//       const response = await axios.put(
+//         "https://jsonplaceholder.typicode.com/users/1",
+//         {
+//           name: name,
+//         }
+//       );
+
+//       console.log(response.data);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <input
+//         type="text"
+//         value={name}
+//         onChange={(e) => setName(e.target.value)}
+//         placeholder="Enter new name"
+//       />
+
+//       <button onClick={updateUser}>Update</button>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//AXIOS DELETE
+
 import axios from "axios";
-import { useState } from "react";
 
 function App() {
-  const [name, setName] = useState("");
-
-  const updateUser = async () => {
+  const deleteUser = async () => {
     try {
-      const response = await axios.put(
-        "https://jsonplaceholder.typicode.com/users/1",
-        {
-          name: name,
-        }
+      const response = await axios.delete(
+        "https://jsonplaceholder.typicode.com/users/1"
       );
 
       console.log(response.data);
@@ -873,14 +906,7 @@ function App() {
 
   return (
     <div>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Enter new name"
-      />
-
-      <button onClick={updateUser}>Update</button>
+      <button onClick={deleteUser}>Delete User</button>
     </div>
   );
 }
