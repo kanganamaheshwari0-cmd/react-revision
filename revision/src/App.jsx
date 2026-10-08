@@ -1041,31 +1041,54 @@
 
 //STATEMANAGEMENt
 
+// import { useState } from "react";
+
+// function App() {
+//   const [user, setUser] = useState({
+//     name: "Kangana",
+//     age: 20,
+//   });
+
+//   const changeName = () => {
+//     setUser({
+//       ...user,
+//       name: "Rahul",
+//     });
+//   };
+
+//   return (
+//     <div>
+//       <h1>User Information</h1>
+
+//       <h2>Name: {user.name}</h2>
+//       <h2>Age: {user.age}</h2>
+
+//       <button onClick={changeName}>
+//         Change Name
+//       </button>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//STATE MANAGEMENT MULTIPLE COMPONENT
+
 import { useState } from "react";
+import Navbar from "./Navbar";
+import Profile from "./Profile";
 
 function App() {
-  const [user, setUser] = useState({
-    name: "Kangana",
-    age: 20,
-  });
-
-  const changeName = () => {
-    setUser({
-      ...user,
-      name: "Rahul",
-    });
-  };
+  const [user, setUser] = useState("Kangana");
 
   return (
     <div>
-      <h1>User Information</h1>
+      <Navbar user={user} />
 
-      <h2>Name: {user.name}</h2>
-      <h2>Age: {user.age}</h2>
-
-      <button onClick={changeName}>
-        Change Name
-      </button>
+      <Profile
+        user={user}
+        setUser={setUser}
+      />
     </div>
   );
 }
