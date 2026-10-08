@@ -56,21 +56,41 @@
 
 //REDUX TOOLKIT
 
-import { useSelector, useDispatch } from "react-redux";
-import { changeUser } from "./userSlice";
+// import { useSelector, useDispatch } from "react-redux";
+// import { changeUser } from "./userSlice";
+
+// function Profile() {
+//   const user = useSelector((state) => state.user.name);
+
+//   const dispatch = useDispatch();
+
+//   return (
+//     <div>
+//       <h2>Profile: {user}</h2>
+
+//       <button onClick={() => dispatch(changeUser("Rahul"))}>
+//         Change User
+//       </button>
+//     </div>
+//   );
+// }
+
+// export default Profile;
+
+//LAZY LOADING
+
+import { lazy, Suspense } from "react";
+
+const About = lazy(() => import("./About"));
 
 function Profile() {
-  const user = useSelector((state) => state.user.name);
-
-  const dispatch = useDispatch();
-
   return (
     <div>
-      <h2>Profile: {user}</h2>
+      <h1>Profile</h1>
 
-      <button onClick={() => dispatch(changeUser("Rahul"))}>
-        Change User
-      </button>
+      <Suspense fallback={<p>Loading...</p>}>
+        <About />
+      </Suspense>
     </div>
   );
 }
