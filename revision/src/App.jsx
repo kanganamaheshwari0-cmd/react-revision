@@ -1074,22 +1074,40 @@
 
 //STATE MANAGEMENT MULTIPLE COMPONENT
 
+// import { useState } from "react";
+// import Navbar from "./Navbar";
+// import Profile from "./Profile";
+
+// function App() {
+//   const [user, setUser] = useState("Kangana");
+
+//   return (
+//     <div>
+//       <Navbar user={user} />
+
+//       <Profile
+//         user={user}
+//         setUser={setUser}
+//       />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//CONTEXT API
+
 import { useState } from "react";
-import Navbar from "./Navbar";
-import Profile from "./Profile";
+import { UserContext } from "./UserContext";
+import Home from "./Home";
 
 function App() {
   const [user, setUser] = useState("Kangana");
 
   return (
-    <div>
-      <Navbar user={user} />
-
-      <Profile
-        user={user}
-        setUser={setUser}
-      />
-    </div>
+    <UserContext.Provider value={{ user, setUser }}>
+      <Home />
+    </UserContext.Provider>
   );
 }
 
