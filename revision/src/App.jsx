@@ -1115,15 +1115,33 @@
 
 //ZUSTAND
 
+// import Navbar from "./Navbar";
+// import Profile from "./Profile";
+
+// function App() {
+//   return (
+//     <div>
+//       <Navbar />
+//       <Profile />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//REDUX TOOLKIT
+
+import { Provider } from "react-redux";
+import { store } from "./store";
 import Navbar from "./Navbar";
 import Profile from "./Profile";
 
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <Navbar />
       <Profile />
-    </div>
+    </Provider>
   );
 }
 
