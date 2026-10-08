@@ -1097,17 +1097,33 @@
 
 //CONTEXT API
 
-import { useState } from "react";
-import { UserContext } from "./UserContext";
-import Home from "./Home";
+// import { useState } from "react";
+// import { UserContext } from "./UserContext";
+// import Home from "./Home";
+
+// function App() {
+//   const [user, setUser] = useState("Kangana");
+
+//   return (
+//     <UserContext.Provider value={{ user, setUser }}>
+//       <Home />
+//     </UserContext.Provider>
+//   );
+// }
+
+// export default App;
+
+//ZUSTAND
+
+import Navbar from "./Navbar";
+import Profile from "./Profile";
 
 function App() {
-  const [user, setUser] = useState("Kangana");
-
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <Home />
-    </UserContext.Provider>
+    <div>
+      <Navbar />
+      <Profile />
+    </div>
   );
 }
 
