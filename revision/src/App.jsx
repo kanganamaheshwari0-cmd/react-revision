@@ -981,35 +981,91 @@
 
 //Axios + useEffect() — API call automatically karna
 
-import axios from "axios";
-import { useEffect, useState } from "react";
+// import axios from "axios";
+// import { useEffect, useState } from "react";
+
+// function App() {
+//   const [users, setUsers] = useState([]);
+
+//   useEffect(() => {
+//     const getUsers = async () => {
+//       try {
+//         const response = await axios.get(
+//           "https://jsonplaceholder.typicode.com/users"
+//         );
+
+//         setUsers(response.data);
+//       } catch (error) {
+//         console.log(error);
+//       }
+//     };
+
+//     getUsers();
+//   }, []);
+
+//   return (
+//     <div>
+//       <h2>Users</h2>
+
+//       {users.map((user) => (
+//         <p key={user.id}>{user.name}</p>
+//       ))}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//Axios Request Headers
+
+// import axios from "axios";
+
+// const getUsers = async () => {
+//   try {
+//     const response = await axios.get(
+//       "https://jsonplaceholder.typicode.com/users",
+//       {
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//       }
+//     );
+
+//     console.log(response.data);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// export default getUsers
+
+//STATEMANAGEMENt
+
+import { useState } from "react";
 
 function App() {
-  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({
+    name: "Kangana",
+    age: 20,
+  });
 
-  useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/users"
-        );
-
-        setUsers(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getUsers();
-  }, []);
+  const changeName = () => {
+    setUser({
+      ...user,
+      name: "Rahul",
+    });
+  };
 
   return (
     <div>
-      <h2>Users</h2>
+      <h1>User Information</h1>
 
-      {users.map((user) => (
-        <p key={user.id}>{user.name}</p>
-      ))}
+      <h2>Name: {user.name}</h2>
+      <h2>Age: {user.age}</h2>
+
+      <button onClick={changeName}>
+        Change Name
+      </button>
     </div>
   );
 }
